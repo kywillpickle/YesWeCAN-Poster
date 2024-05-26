@@ -1,0 +1,93 @@
+@font-face {font-family: ProximaNova-Bold;src: url(https://kywillpickle.github.io/YesWeCAN-Poster/fonts/ProximaNova-Bold.otf);}
+@font-face {font-family: ProximaNova-Regular;src: url(https://kywillpickle.github.io/YesWeCAN-Poster/fonts/ProximaNova-Regular.otf);}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #022851;
+}
+body * {
+    font-family: ProximaNova-Regular;
+    text-align: center;
+}
+img {
+    transition: all 0.5s;
+    object-fit: cover;
+    overflow: hidden;
+    padding-left: 0;
+}
+.col-sm-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div {
+    overflow: hidden;
+}
+div > img:hover {
+    transform: scale(1.08);
+}
+body > div > h2 {
+    transition: all 0.5s;
+    display: inline-block;
+    font-size: 50px;
+}
+body > div > h2:hover {
+    transform: scale(1.05);
+}
+body > div > p {
+    font-size: 25px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+body > div > div {
+    align-items: stretch;
+}
+body > div > div * {
+    text-align: left;
+}
+body > div > div > div {
+    min-height: 100%;
+}
+body > div > div > div > div img:hover {
+    transform: scale(1.05);
+}
+body > div > div button {
+    min-width: 15%;
+    margin-right: 5px;
+}
+body > div > div p {
+    font-size: 25px;
+}
+body > div > div h3 {
+    display: inline-block;
+    transition: all 0.5s;
+    font-size: 40px;
+    margin-right: 5px;
+}
+body > div > div h3:hover {
+    transform: scale(1.05);
+}
+body > div > div.row:nth-of-type(even) {
+    background-color:#ffffff66;
+}
+#header {
+    padding-top: 150px;
+}
+#bio {
+    padding-bottom: 50px;
+}
+#middle {
+    background-color: #c5c5c5ff;
+}
+#speedgoat {
+    background-color: #c6e3d0ff;
+}
+#left {
+    background-color: #b3c1d1ff;
+}
+#right {
+    background-color: #fff2ccff;
+}

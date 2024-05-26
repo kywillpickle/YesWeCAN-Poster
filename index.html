@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Yes We CAN!</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css" media="screen"/>
+        <!-- <link rel="icon" href="https://www.topnotchgames.net/media/tbmlogoShdNoBkg.png"> -->
+        <meta property="og:title" content="Yes We CAN!"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://kywillpickle.github.io/YesWeCAN-Poster/"/>
+        <meta property="og:image" content="https://kywillpickle.github.io/YesWeCAN-Poster/assets/lyriq.png"/>
+        <meta property="og:description" content="Sí Se Puede"/>
+        <meta name="author" content="Nicolas Conrad, Fletcher Dubé, Spencer Moore, Kyle Pickle"/>
+        <meta name="keywords" content="Nicolas Conrad, Fletcher Dubé, Spencer Moore, Kyle Pickle, Yes We CAN, Yes We CAN!, ECS193A, ECS193B, Davis, UC Davis, UCD, Senior Project, Senior Design"/>
+        <meta name="theme-color" content="#ffd966"/>
+        <meta name="twitter:title" content="Yes We CAN!">
+        <meta name="twitter:description" content="Sí Se Puede">
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="https://kywillpickle.github.io/YesWeCAN-Poster/assets/lyriq.png"/>
+    </head>
+    <body>
+        <header id="header" class="container-fluid text-white">
+            <h1 class="display-1">
+                Yes We Can!
+            </h1>
+            <h1 class="display-4 pb-5">
+                2024 Senior Design Project<br>
+                Nicolas Conrad, Fletcher Dubé, Spencer Moore, Kyle Pickle
+            </h1>
+        </header>
+        <div id="middle" class="container-fluid pt-5">
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <h3>
+                        Introduction
+                    </h3>
+                    <p>
+                        <b>EcoCAR EV Challenge</b> is a four-year collegiate automotive engineering competition with the goal of integrating a plethora of industry-standard autonomous and propulsion control systems into a <b>2023 Cadillac LYRIQ</b>.
+                        Our group was enlisted by the rookie UC Davis EcoCAR team in order to help implement various Computer Science-related tasks within the LYRIQ, with a focus on inter-vehicle communication using common protocols like <b>CAN-FD</b>.
+                    </p>
+                </div>
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/lyriq.png">
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/can.png">
+                </div>
+                <div class="col-sm-8 align-self-center p-5">
+                    <p>
+                        <b>Controller Area Network Flexible Data-Rate (CAN-FD)</b> is a High-integrity serial bus system used in nearly all modern in-vehicle networks, and thus a primary focus of our work on this project.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="speedgoat" class="container-fluid pt-5">
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <h3>
+                        Speedgoat Overview
+                    </h3>
+                    <p>
+                        The <b>Propulsion Supervisory Controller (PSC)</b>, also known as the Speedgoat, is a Real-Time Simulation platform for running models created in MATLAB and Simulink, essential for testing and validation.
+                        It has a wide range of I/O capabilities, allowing it to interface with a multitude of hardware and sensor components.
+                        The Speedgoat is a vital part of all parts of our project, allowing us to collect real-time data and process signals directly within the vehicle environment.
+                    </p>
+                </div>
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/speedgoat.png">
+                </div>
+            </div>
+        </div>
+        <div id="left" class="container-fluid pt-5">
+            <div class="row align-items-stretch">
+                <div class="col-sm-12 align-self-center p-5">
+                    <h3>
+                        Cybersecurity
+                    </h3>
+                    <p>
+                        Facilitating the encryption/decryption of messages is a vital component of most modern smart cars and one of the tasks assigned to our team.
+                        In order to communicate with the vehicle, the PSC uses incrementing counter values along with a unique message identifier to encrypt messages sent out to the rest of the LYRIQ.
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <p>
+                        Upon startup, the controller sends a <b>Data-by-IDentifier (DID) Request</b> to the vehicle, which prompts vehicle modules to respond with their notion of their preexisting counter values. While DID Requests are typically only used for diagnostics and testing, it was mandatory to implement for the competition and thus fell on our team. These modules then respond with their respective counter values, which the controller processes. The controller can then use these values as an initial state until the next power cycle of the vehicle.
+                    </p>
+                </div>
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/cyber_message.svg">
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <p>
+                        Every critical message is encrypted using the counter into two specific fields: the <b>Message Authentication Code (MAC)</b> and the <b>Freshness Counter</b>. The MAC is calculated depending on the freshness counter and the message itself. Specifically, it is a form of cyclic redundancy check. Only the most significant bits of the MAC and the counter are sent, not the entire value. Finally and at set periodic intervals, a <b>Protected Counter Synchronization Message (PCSM)</b> is sent out to all modules containing the full counter value. 
+                    </p>
+                </div>
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/cyber_comms.svg">
+                </div>
+            </div>
+        </div>
+        <div id="right" class="container-fluid pt-5">
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <h3>
+                        Hardware
+                    </h3>
+                    <p>
+                        The <b>IO397</b>, one of <b>Speedgoat's FPGA I/O Modules</b>, was essential for interfacing with various analog and digital sensors within the vehicle, translating signals into readable Simulink values for the PSC. Easily reconfigurable and capable of rapid signal processing, our team utilized these tools these tools in order to interact with the in-vehicle <b>Thermistor</b> and <b>Flowmeter</b>, both of which measure coolant from the <b>Magna Drive Unit (MDU)</b>.
+                    </p>
+                    <div class="col-sm-4 px-0">
+                        <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/io397.png">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/hardware.png">
+                </div>
+                <div class="col-sm-8 align-self-center p-5">
+                    <p>
+                        The <b>Thermistor</b> is part of a resistive divider circuit to determine the voltage drop across it, necessary to compute its resistance.
+                        This resistance is predictably correlated to temperature; an interpolated lookup table is used to make the conversion.
+                        The turbine-style <b>Flowmeter</b> generates a square wave, where high pulses are induced by a rotating vane passing by the sensor.
+                        Multiplying the number of pulses in t by the K-factor (volume of fluid per pulse) yields the flow rate for a given interval.
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <h3>
+                        Team-Added Display
+                    </h3>
+                    <p>
+                        A mandatory part of EcoCAR's final deliverable, the <b>Team-Added Display (TAD)</b> is a dashboard-mounted control panel hosted on a Raspberry Pi that displays vital system and control signals for the driver. These signals originate from all over the vehicle but are collected within the PSC and sent over UDP to the Pi. Interfaced with the TAD is the <b>Indicator Switch Panel (ISP)</b> which displays LED signals alongside physical switches that control the braking and autonomous vehicle systems. Our team took up this task, working with tools like Linux, Python, and Streamlit to do so.
+                    </p>
+                    <div class="col-sm-4 px-0">
+                        <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/tad.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="middle" class="container-fluid py-5">
+            <div class="row align-items-stretch">
+                <div class="col-sm-8 align-self-center p-5">
+                    <h3>
+                        Acknowledgements
+                    </h3>
+                    <p>
+                        Special thanks to Dr. Christopher Nitta and TA Rico Rodriguez, as well as Members of EcoCAR: Project Manager Ajay Suresh, PCM Lead Abhigyan Majumdar, PCM Systems Lead Shana Ebrahimnejad, SDI Testing & Integrations Lead Luis Molina, and CAV Simulation & Modeling Lead Max Nelson.
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-sm-4 px-0">
+                    <img class="img-fluid" style="width: 88%;" src="https://kywillpickle.github.io/YesWeCAN-Poster/assets/platforms.png">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

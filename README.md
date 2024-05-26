@@ -1,2 +1,2 @@
-# YesWeCan Poster
+# YesWeCAN Poster
  Sí Se Puede
