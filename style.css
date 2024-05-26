@@ -73,12 +73,6 @@ body > div > div h3:hover {
 body > div > div.row:nth-of-type(even) {
     background-color:#ffffff66;
 }
-#header {
-    padding-top: 50px;
-}
-#bio {
-    padding-bottom: 50px;
-}
 #middle {
     background-color: #c5c5c5ff;
 }
