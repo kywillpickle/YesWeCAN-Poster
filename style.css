@@ -12,11 +12,19 @@ body * {
     font-family: ProximaNova-Regular;
     text-align: center;
 }
-img {
+.img-fluid {
+    width: 88%;
     transition: all 0.5s;
     object-fit: cover;
     overflow: hidden;
     padding-left: 0;
+}
+
+@media (min-width: 576px) {
+    .img-fluid {
+        max-width: 500px; /* Adjust as needed */
+        height: auto;
+    }
 }
 .col-sm-4 {
     display: flex;
